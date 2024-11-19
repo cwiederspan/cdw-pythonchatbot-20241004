@@ -13,6 +13,10 @@ routes = web.RouteTableDef()
 
 @routes.post("/api/messages")
 async def on_messages(req: web.Request) -> web.Response:
+    print("Request received...")
+    body_text = await req.text()
+    print(f"TESTING: {body_text}")
+
     res = await bot_app.process(req)
 
     if res is not None:
